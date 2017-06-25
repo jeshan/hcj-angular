@@ -18,7 +18,7 @@
     "remove-dist": "rimraf ./dist",
     "prebuild": "npm run clean-dist && npm run lint && npm run test",
     "build": "babel-node tools/build.js && npm run open:dist",
-    "test": "jest",
+    "test": "mocha --recursive src/*.spec.js",
     "test:CI": "babel-node tools/testCi.js",
     "test:cover": "npm run test -- --coverage ",
     "test:cover:CI": "npm run test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
@@ -59,6 +59,7 @@
     "identity-obj-proxy": "3.0.0",
     "jest": "18.1.0",
     "json-loader": "0.5.4",
+    "mocha": "3.4.2",
     "mockdate": "2.0.1",
     "node-sass": "4.5.2",
     "npm-run-all": "3.1.2",
@@ -91,40 +92,10 @@
     "type": "git",
     "url": "git+ssh://git@gitlab.com/jeshan/hcj-starter.git"
   },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(css|scss)$": "identity-obj-proxy",
-      "^.+\\.(gif|ttf|eot|svg|woff|woff2|ico)$": "<rootDir>/tools/fileMock.js"
-    }
-  },
   "babel": {
     "presets": [
-      "stage-1"
-    ],
-    "env": {
-      "development": {
-        "presets": [
-          "env"
-        ]
-      },
-      "production": {
-        "presets": [
-          [
-            "env",
-            {
-              "es2015": {
-                "modules": false
-              }
-            }
-          ]
-        ]
-      },
-      "test": {
-        "presets": [
-          "env"
-        ]
-      }
-    }
+      "env"
+    ]
   },
   "eslintConfig": {
     "root": true,
@@ -135,19 +106,13 @@
     ],
     "parser": "babel-eslint",
     "parserOptions": {
-      "ecmaVersion": 6,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true,
-        "experimentalObjectRestSpread": true
-      }
+      "ecmaVersion": 2017,
+      "sourceType": "module"
     },
     "env": {
       "es6": true,
       "browser": true,
-      "node": true,
-      "jquery": true,
-      "jest": true
+      "node": true
     },
     "rules": {
       "quotes": 0,

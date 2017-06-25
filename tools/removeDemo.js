@@ -12,12 +12,7 @@ const pathsToRemove = [
   './tools/removeDemo.js'
 ];
 
-const filesToCreate = [
-  {
-    path: './src/components/emptyTest.spec.js',
-    content: '// Must have at least one test file in this directory or Mocha will throw an error.'
-  }
-];
+const filesToCreate = []; // TODO: create example test file
 
 function removePath(path, callback) {
   rimraf(path, error => {
