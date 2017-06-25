@@ -5,5 +5,6 @@ import './styles/styles.scss'; // Yep, that's right. You can import SASS/CSS fil
 
 if (module.hot) {
   module.hot.accept('./bla/bla', () => {
+    // not figured out how to use this feature yet
   });
 }
