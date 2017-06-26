@@ -36,7 +36,8 @@
   "homepage": "https://gitlab.com/jeshan/hcj-starter#README",
   "dependencies": {
     "@uirouter/angularjs": "1.0.4",
-    "angular": "1.6.4"
+    "angular": "1.6.4",
+    "superagent": "1.7.1"
   },
   "devDependencies": {
     "autoprefixer": "7.1.1",
