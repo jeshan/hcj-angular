@@ -9,7 +9,7 @@ app
   .value('global1', 1)
   .value('global2', 2);
 
-app.config($stateProvider => {
+app.config(['$stateProvider', $stateProvider => {
   // TODO: define your routes here
   $stateProvider
     .state({
@@ -18,4 +18,4 @@ app.config($stateProvider => {
       controller: 'HelloCtrl',
       templateUrl: 'hello/hello.html'
     });
-});
+}]);
