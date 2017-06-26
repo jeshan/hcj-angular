@@ -9,8 +9,7 @@ app.controller('HelloCtrl', ['$scope', $scope => {
   $scope.model = {};
 
   api.hello({}, (error, data, response) => {
-    if (error) {
-    } else {
+    if (!error) {
       let helloText = response.body;
       $scope.model = {helloText};
     }
