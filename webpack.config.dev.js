@@ -5,7 +5,8 @@ import path from 'path';
 
 export default {
   resolve: {
-    extensions: ['*', '.js', '.json']
+    extensions: ['*', '.js', '.json'],
+    modules: ['node_modules', path.resolve(__dirname, 'swagger-javascript-client/src')]
   },
   devtool: 'eval-source-map', // more info:https://webpack.github.io/docs/build-performance.html#sourcemaps and https://webpack.github.io/docs/configuration.html#devtool
   entry: [
@@ -59,5 +60,8 @@ export default {
       {test: /\.ico$/, loader: 'file-loader?name=[name].[ext]'},
       {test: /(\.css|\.scss|\.sass)$/, loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap']}
     ]
+  },
+  node: {
+    fs: 'empty'
   }
 };

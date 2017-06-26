@@ -1,0 +1,19 @@
+{
+  "name": "hello_server_app",
+  "version": "0.0.1",
+  "description": "ERROR_UNKNOWN",
+  "license": "Unlicense",
+  "main": "src/index.js",
+  "private": true,
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --recursive"
+  },
+  "dependencies": {
+    "superagent": "1.7.1"
+  },
+  "devDependencies": {
+    "mocha": "~2.3.4",
+    "sinon": "1.17.3",
+    "expect.js": "~0.3.1"
+  }
+}
