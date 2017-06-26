@@ -32,7 +32,10 @@
     "url": "https://gitlab.com/jeshan/hcj-starter/issues"
   },
   "homepage": "https://gitlab.com/jeshan/hcj-starter#README",
-  "dependencies": {},
+  "dependencies": {
+    "@uirouter/angularjs": "1.0.4",
+    "angular": "1.6.4"
+  },
   "devDependencies": {
     "autoprefixer": "7.1.1",
     "babel-cli": "6.24.1",
