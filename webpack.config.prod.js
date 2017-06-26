@@ -14,7 +14,8 @@ const GLOBALS = {
 
 export default {
   resolve: {
-    extensions: ['*', '.js', '.json']
+    extensions: ['*', '.js', '.json'],
+    modules: ['node_modules', path.resolve(__dirname, 'swagger-javascript-client/src')]
   },
   devtool: 'source-map', // more info:https://webpack.github.io/docs/build-performance.html#sourcemaps and https://webpack.github.io/docs/configuration.html#devtool
   entry: path.resolve(__dirname, 'src/index'),
@@ -83,5 +84,8 @@ export default {
       {test: /\.ico$/, loader: 'file-loader?name=[name].[ext]'},
       {test: /(\.css|\.scss|\.sass)$/, loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')}
     ]
+  },
+  node: {
+    fs: 'empty'
   }
 };
