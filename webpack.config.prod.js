@@ -68,7 +68,7 @@ export default {
           includePaths: [path.resolve(__dirname, 'src', 'scss')]
         },
         context: '/',
-        postcss: () => [autoprefixer],
+        postcss: () => [autoprefixer]
       }
     })
   ],

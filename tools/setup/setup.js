@@ -1,7 +1,7 @@
 /* eslint-disable no-var */
 var rimraf = require('rimraf');
 var chalk = require('chalk');
-var prompt = require("prompt");
+var prompt = require('prompt');
 
 var chalkSuccess = chalk.green;
 var chalkWarn = chalk.red;
@@ -12,8 +12,8 @@ console.log(chalkSuccess('Dependencies installed.'));
 
 prompt.start();
 
-console.log(chalkWarn("WARNING:  Preparing to delete local git repository..."));
-prompt.get([{name: 'deleteGit', description: "Delete the git repository?  [Y/n]"}], function(err, result) {
+console.log(chalkWarn('WARNING:  Preparing to delete local git repository...'));
+prompt.get([{name: 'deleteGit', description: 'Delete the git repository?  [Y/n]'}], function(err, result) {
   var deleteGit = result.deleteGit.toUpperCase();
 
   if (err) {
@@ -30,8 +30,7 @@ prompt.get([{name: 'deleteGit', description: "Delete the git repository?  [Y/n]"
 
   if (deleteGit.match(/^N.*/)) {
     updatePackage();
-  }
-  else {
+  } else {
     // remove the original git repository
     rimraf('.git', error => {
       if (error) throw new Error(error);
