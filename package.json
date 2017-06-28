@@ -73,6 +73,7 @@
     "rimraf": "2.6.1",
     "sass-loader": "6.0.6",
     "style-loader": "0.18.2",
+    "swagger": "0.7.5",
     "url-loader": "0.5.9",
     "webpack": "3.0.0",
     "webpack-bundle-analyzer": "2.8.2",
