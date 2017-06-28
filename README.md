@@ -3,13 +3,14 @@ A productivity starter kit for full-stack AngularJS (v1) developers.
 
 # Why bother
 
-- Too much BS involved to setup a productive environment as a JS developer. Save yourself hours of headache and use this template. 
 - It codifies a bunch of decisions that you'll have to make each time you start a project. 
 - **Stop working like an amateur** and use/create a starter kit. They contain:
   - Good practices
   - Lessons learnt
   - Encourages consistency/predictability
   - Avoid forgetting important details
+- Too much BS involved to setup a productive environment as a JS developer. Save yourself hours of headache and use this template. 
+![image](https://github.com/jeshan/hcj-starter/raw/master/The%20Javascript%20Starter%20Kit%20Manifesto%20-%20YouTube%20-%20Google%20Chrome_420.png)
 
 # Main Stack
 - ES7
