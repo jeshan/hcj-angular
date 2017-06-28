@@ -78,21 +78,6 @@ const ENV_SPECIFIC = {
       test: /(\.css|\.scss|\.sass)$/,
       loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')
     },
-    htmlRule: {
-      test: /\.html$/,
-      use: [{
-        loader: 'file-loader',
-        /* options:
-        {
-          name: '[path][name].[ext]'
-        }, */
-        query: {
-          useRelativePath: true,
-          name: '[name].[ext]'
-        }
-      }],
-      exclude: [path.resolve(__dirname, 'src/index.html')]
-    },
     plugins: [
       // Hash the files using MD5 so that their names change when the content changes.
       new WebpackMd5Hash(),
@@ -171,8 +156,22 @@ export default (envName = ((process.node && process.node.NODE_ENV) || 'developme
       {test: /\.svg(\?v=\d+.\d+.\d+)?$/, loader: envVars.svgLoader},
       {test: /\.(jpe?g|png|gif)$/i, loader: 'file-loader?name=[name].[ext]'},
       {test: /\.ico$/, loader: 'file-loader?name=[name].[ext]'},
-      envVars.cssRule,
-      envVars.htmlRule
+      {
+        test: /\.html$/,
+        use: [{
+          loader: 'file-loader',
+          /* options:
+           {
+           name: '[path][name].[ext]'
+           }, */
+          query: {
+            useRelativePath: true,
+            name: '[name].[ext]'
+          }
+        }],
+        exclude: [path.resolve(__dirname, 'src/index.html')]
+      },
+      envVars.cssRule
     ]
   },
   node: {
