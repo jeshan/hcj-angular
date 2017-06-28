@@ -160,10 +160,6 @@ export default (envName = ((process.node && process.node.NODE_ENV) || 'developme
         test: /\.html$/,
         use: [{
           loader: 'file-loader',
-          /* options:
-           {
-           name: '[path][name].[ext]'
-           }, */
           query: {
             useRelativePath: true,
             name: '[name].[ext]'
