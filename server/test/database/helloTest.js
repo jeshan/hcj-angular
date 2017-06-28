@@ -1,5 +1,5 @@
 let mongoose = require('mongoose');
-let mongoUrl = require('../../config/constants/dev').mongoUrl;
+let mongoUrl = require('../../config/dev').mongoUrl;
 let expect = require('chai').expect;
 
 let HelloModel = require('../../config/database/models/hello');
