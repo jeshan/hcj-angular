@@ -16,6 +16,6 @@ app.config(['$stateProvider', $stateProvider => {
       name: 'hello',
       url: '/hello',
       controller: 'HelloCtrl',
-      templateUrl: 'hello/hello.html'
+      template: require('./hello/hello.html')
     });
 }]);

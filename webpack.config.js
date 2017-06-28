@@ -25,10 +25,6 @@ const ENV_SPECIFIC = {
     moduleRules: [{
       test: /(\.css|\.scss|\.sass)$/,
       loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap']
-    },
-    {
-      test: /\.html$/,
-      loader: 'raw-loader'
     }],
     stats: {maxModules: Infinity, exclude: undefined},
     plugins: [
@@ -81,17 +77,6 @@ const ENV_SPECIFIC = {
     moduleRules: [{
       test: /(\.css|\.scss|\.sass)$/,
       loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')
-    },
-    {
-      test: /\.html$/,
-      use: [{
-        loader: 'file-loader',
-        query: {
-          useRelativePath: true,
-          name: '[name].[ext]'
-        }
-      }],
-      exclude: [path.resolve(__dirname, 'src/index.html')]
     }],
     plugins: [
       // Hash the files using MD5 so that their names change when the content changes.
@@ -170,7 +155,8 @@ export default (envName = ((process.node && process.node.NODE_ENV) || 'developme
       {test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/, loader: envVars.ottfLoader},
       {test: /\.svg(\?v=\d+.\d+.\d+)?$/, loader: envVars.svgLoader},
       {test: /\.(jpe?g|png|gif)$/i, loader: 'file-loader?name=[name].[ext]'},
-      {test: /\.ico$/, loader: 'file-loader?name=[name].[ext]'}].concat(envVars.moduleRules)
+      {test: /\.ico$/, loader: 'file-loader?name=[name].[ext]'},
+      {test: /\.html$/, loader: 'raw-loader'}].concat(envVars.moduleRules)
   },
   node: {
     fs: 'empty'
