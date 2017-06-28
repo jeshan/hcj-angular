@@ -132,10 +132,8 @@ const ENV_SPECIFIC = {
   }
 };
 
-let envName = 'development';
-let envVars = ENV_SPECIFIC[envName];
-
-export default {
+export default (envName = ((process.node && process.node.NODE_ENV) || 'development'),
+  envVars = ENV_SPECIFIC[envName]) => ({
   resolve: {
     extensions: ['*', '.js', '.json'],
     modules: ['node_modules', path.resolve(__dirname, 'swagger-javascript-client/src')]
@@ -164,4 +162,4 @@ export default {
   node: {
     fs: 'empty'
   }
-};
+});
