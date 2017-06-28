@@ -22,10 +22,14 @@ const ENV_SPECIFIC = {
     woffLoader: 'url-loader?limit=10000&mimetype=application/font-woff',
     ottfLoader: 'url-loader?limit=10000&mimetype=application/octet-stream',
     svgLoader: 'url-loader?limit=10000&mimetype=image/svg+xml',
-    cssRule: {
+    moduleRules: [{
       test: /(\.css|\.scss|\.sass)$/,
       loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap']
     },
+    {
+      test: /\.html$/,
+      loader: 'raw-loader'
+    }],
     stats: {maxModules: Infinity, exclude: undefined},
     plugins: [
       new webpack.DefinePlugin({
@@ -74,10 +78,21 @@ const ENV_SPECIFIC = {
     woffLoader: 'url-loader?limit=10000&mimetype=application/font-woff&name=[name].[ext]',
     ottfLoader: 'url-loader?limit=10000&mimetype=application/octet-stream&name=[name].[ext]',
     svgLoader: 'url-loader?limit=10000&mimetype=image/svg+xml&name=[name].[ext]',
-    cssRule: {
+    moduleRules: [{
       test: /(\.css|\.scss|\.sass)$/,
       loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')
     },
+    {
+      test: /\.html$/,
+      use: [{
+        loader: 'file-loader',
+        query: {
+          useRelativePath: true,
+          name: '[name].[ext]'
+        }
+      }],
+      exclude: [path.resolve(__dirname, 'src/index.html')]
+    }],
     plugins: [
       // Hash the files using MD5 so that their names change when the content changes.
       new WebpackMd5Hash(),
@@ -155,20 +170,7 @@ export default (envName = ((process.node && process.node.NODE_ENV) || 'developme
       {test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/, loader: envVars.ottfLoader},
       {test: /\.svg(\?v=\d+.\d+.\d+)?$/, loader: envVars.svgLoader},
       {test: /\.(jpe?g|png|gif)$/i, loader: 'file-loader?name=[name].[ext]'},
-      {test: /\.ico$/, loader: 'file-loader?name=[name].[ext]'},
-      {
-        test: /\.html$/,
-        use: [{
-          loader: 'file-loader',
-          query: {
-            useRelativePath: true,
-            name: '[name].[ext]'
-          }
-        }],
-        exclude: [path.resolve(__dirname, 'src/index.html')]
-      },
-      envVars.cssRule
-    ]
+      {test: /\.ico$/, loader: 'file-loader?name=[name].[ext]'}].concat(envVars.moduleRules)
   },
   node: {
     fs: 'empty'
