@@ -4,7 +4,7 @@ import config from '../webpack.config';
 
 config.plugins.push(new BundleAnalyzerPlugin());
 
-const compiler = webpack(config());
+const compiler = webpack(config('production'));
 
 compiler.run((error, stats) => {
   if (error) {
