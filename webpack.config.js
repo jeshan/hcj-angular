@@ -13,9 +13,9 @@ const ENV_SPECIFIC = {
     devtool: 'eval-source-map',
     entry: [
       // must be first entry to properly set public path
-      './src/webpack-public-path',
+      './client/webpack-public-path',
       'webpack-hot-middleware/client?reload=true',
-      path.resolve(__dirname, 'src/index.js') // Defining path seems necessary for this to work consistently on Windows machines.
+      path.resolve(__dirname, 'client/index.js') // Defining path seems necessary for this to work consistently on Windows machines.
     ],
     jsFilename: 'bundle.js',
     eotLoader: 'file-loader',
@@ -38,8 +38,8 @@ const ENV_SPECIFIC = {
       // Generate HTML file that contains references to generated bundles. See here for how this
       // works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
       new HtmlWebpackPlugin({
-        template: 'src/index.html',
-        favicon: 'src/favicon.ico',
+        template: 'client/index.html',
+        favicon: 'client/favicon.ico',
         minify: {
           removeComments: true,
           collapseWhitespace: true
@@ -54,7 +54,7 @@ const ENV_SPECIFIC = {
         noInfo: false, // set to false to see a list of every file being bundled.
         options: {
           sassLoader: {
-            includePaths: [path.resolve(__dirname, 'src', 'scss')]
+            includePaths: [path.resolve(__dirname, 'client', 'scss')]
           },
           context: '/',
           postcss: () => [autoprefixer]
@@ -64,7 +64,7 @@ const ENV_SPECIFIC = {
   },
   production: {
     devtool: 'source-map',
-    entry: path.resolve(__dirname, 'src/index'),
+    entry: path.resolve(__dirname, 'client/index'),
     jsFilename: '[name].[chunkhash].js',
     definePluginOpts: {
       'process.env.NODE_ENV': JSON.stringify('production'),
@@ -93,8 +93,8 @@ const ENV_SPECIFIC = {
 
       // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
       new HtmlWebpackPlugin({
-        template: 'src/index.html',
-        favicon: 'src/favicon.ico',
+        template: 'client/index.html',
+        favicon: 'client/favicon.ico',
         minify: {
           removeComments: true,
           collapseWhitespace: true,
@@ -122,7 +122,7 @@ const ENV_SPECIFIC = {
         noInfo: true, // set to false to see a list of every file being bundled.
         options: {
           sassLoader: {
-            includePaths: [path.resolve(__dirname, 'src', 'scss')]
+            includePaths: [path.resolve(__dirname, 'client', 'scss')]
           },
           context: '/',
           postcss: () => [autoprefixer]
