@@ -18,16 +18,19 @@ A productivity starter kit for full-stack AngularJS (v1) developers.
 - Node.js
 - Swagger
 - SASS
+- MongoDB with Mongoose
 
 # Features
 ## Available
 - ES7 for latest JS features from front to back
 - auto reload for API, JS on frontend and backend, HTML, and SASS.
+- API development, mocking and code generation with Swaggewr
 - prod build for minification of css, js and other resources
 - testing with Mocha
-- linting rules to catch code style issues with ESLint
+- Sensible linting rules baked-in to catch code style issues (with ESLint)
 - Code conventions
-- Cache busting to cache resources for as long as needed and not more.
+- Cache busting to cache resources for as long as possible and not more.
+- Easier Mongo queries, validation and business logic with Mongoose JS
 
 ## Others coming soon
 - zero-downtime deployment with PM2
