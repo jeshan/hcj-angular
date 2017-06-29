@@ -26,7 +26,7 @@ A productivity starter kit for full-stack AngularJS (v1) developers.
 - auto reload for API, JS on frontend and backend, HTML, and SASS.
 - API development, mocking and code generation with Swaggewr
 - prod build for minification of css, js and other resources
-- testing with Mocha
+- testing with Mocha: automatic running on tests on changes to catch regressions as early as possible
 - Sensible linting rules baked-in to catch code style issues (with ESLint)
 - Code conventions
 - Cache busting to cache resources for as long as possible and not more.
