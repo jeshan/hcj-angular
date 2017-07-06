@@ -41,6 +41,77 @@ A productivity starter kit for full-stack AngularJS (v1) developers.
 - error logging
 - [your suggestions](https://github.com/jeshan/hcj-starter/issues/new)
 
+# Setup
+## Installing mongo
+
+## Create a replica set
+To create a few mongo nodes (make sure dbpath directories exist beforehand):
+`mkdir -p /path/to/data/hcj-repl-set-1 /path/to/data/hcj-repl-set-2 /path/to/data/hjc-repl-set-3`
+
+`mongod --port 27017 --dbpath /path/to/data/hcj-repl-set-1 --replSet hcj-repl-set`
+
+`mongod --port 27018 --dbpath /path/to/data/hcj-repl-set-2 --replSet hcj-repl-set`
+
+`mongod --port 27019 --dbpath /path/to/data/hcj-repl-set-3 --replSet hcj-repl-set`
+
+### Regular setup (dev)
+
+To connect to a node: `mongo --port <PORT>`
+Run the following commands only on any one of the nodes:
+- `rs.initiate()`
+- `rs.add("2ndHost:2ndPort")`
+- `rs.add("3rdHost:3rdPort")`
+
+Verify that the 3 nodes are connected to the same replica set with
+
+`rs.status()`
+
+Next, we need to add some users and enable authentication.
+
+#### Mongo Security
+- Create a keyfile to be used so that the replica set members can authenticate with each other:
+
+`openssl rand -base64 756 > /path/to/keyfile`
+
+- Copy this key file to each server hosting the replica set members.
+- Restart all members of the cluster.
+- Connect to the **primary** node in the cluster. Identify which one it is by running `mongo --eval "db.isMaster().primary"`
+- Create a user administrator:
+```
+db.getSiblingDB("admin").createUser(
+  {
+    user: <USER>,
+    pwd: <PASS>,
+    roles: ["root"]
+  }
+)
+```
+- Authenticate as the above user, with either:
+  - `db.auth(<ADMIN>, <PASS>)`
+  - `mongo -u <ADMIN> -p <PASS> --authenticationDatabase admin --port <PORT>`
+- Create a cluster administrator:
+
+```
+db.getSiblingDB("admin").createUser(
+  {
+    user: <USER>,
+    pwd: <PASS>,
+    roles: [ { role: "clusterAdmin", db: "admin" } ]
+  }
+)
+```
+Note: from now on, use this user to make queries like `rs.status()`
+
+- Create an application user:
+```
+db.getSiblingDB("hcj-app").createUser(
+  {
+    "user" : "appuser",
+    "pwd" : <PASS>,
+    roles: ["readWrite"]
+  }
+)
+```
 
 # Licence
 Copyright Jeshan G. BABOOA. Released under the "simplified" BSD licence.
