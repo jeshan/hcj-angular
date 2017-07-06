@@ -1,11 +1,4 @@
-FROM mhart/alpine-node:8.1.3
-
-COPY api/ /api
-COPY config/ /config
-COPY node_modules/ /node_modules
-COPY package.json app.js /
-
-RUN npm install pm2 -g
+FROM keymetrics/pm2-docker-alpine:8
 
 EXPOSE 10010
 
