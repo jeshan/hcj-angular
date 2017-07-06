@@ -100,6 +100,7 @@
       "env"
     ]
   },
+  "eslintIgnore": ["client/dist"],
   "eslintConfig": {
     "root": true,
     "extends": [
