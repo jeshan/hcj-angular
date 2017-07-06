@@ -31,6 +31,8 @@ A productivity starter kit for full-stack AngularJS (v1) developers.
 - Code conventions
 - Cache busting to cache resources for as long as possible and not more.
 - Easier Mongo queries, validation and business logic with Mongoose JS
+- Node process management with PM2
+- Docker: just run `docker-compose up` and you're good  to go. Containers allow for fast iteration by using volumes for source directories.
 
 ## Others coming soon
 - zero-downtime deployment with PM2
