@@ -5,7 +5,6 @@ import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import WebpackMd5Hash from 'webpack-md5-hash';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import autoprefixer from 'autoprefixer';
 import path from 'path';
 
 const ENV_SPECIFIC = {
@@ -24,7 +23,7 @@ const ENV_SPECIFIC = {
     svgLoader: 'url-loader?limit=10000&mimetype=image/svg+xml',
     moduleRules: [{
       test: /(\.css|\.scss|\.sass)$/,
-      loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap']
+      loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap']
     }],
     stats: {maxModules: Infinity, exclude: undefined},
     plugins: [
@@ -56,8 +55,7 @@ const ENV_SPECIFIC = {
           sassLoader: {
             includePaths: [path.resolve(__dirname, 'client', 'scss')]
           },
-          context: '/',
-          postcss: () => [autoprefixer]
+          context: '/'
         }
       })
     ]
@@ -76,9 +74,10 @@ const ENV_SPECIFIC = {
     svgLoader: 'url-loader?limit=10000&mimetype=image/svg+xml&name=[name].[ext]',
     moduleRules: [{
       test: /(\.css|\.scss|\.sass)$/,
-      loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')
+      loader: ExtractTextPlugin.extract('css-loader?sourceMap!sass-loader?sourceMap')
     }],
     plugins: [
+
       // Hash the files using MD5 so that their names change when the content changes.
       new WebpackMd5Hash(),
 
@@ -124,8 +123,7 @@ const ENV_SPECIFIC = {
           sassLoader: {
             includePaths: [path.resolve(__dirname, 'client', 'scss')]
           },
-          context: '/',
-          postcss: () => [autoprefixer]
+          context: '/'
         }
       })
     ]
