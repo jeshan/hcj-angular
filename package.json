@@ -10,7 +10,7 @@
     "start-message": "babel-node tools/startMessage.js",
     "prestart": "npm-run-all --parallel start-message",
     "start": "npm-run-all --parallel test:watch open:src lint:watch start:server",
-    "start:server": "cd server; swagger-project start; swagger-project edit",
+    "start:server": "npm start --prefix server/",
     "create-server-project": "swagger-project create server -f express",
     "open:src": "babel-node tools/srcServer.js",
     "open:dist": "babel-node tools/distServer.js",
