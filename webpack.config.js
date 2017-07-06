@@ -152,7 +152,7 @@ export default (envName = ((process.node && process.node.NODE_ENV) || 'developme
       {test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: envVars.woffLoader},
       {test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/, loader: envVars.ottfLoader},
       {test: /\.svg(\?v=\d+.\d+.\d+)?$/, loader: envVars.svgLoader},
-      {test: /\.(jpe?g|png|gif)$/i, loader: 'file-loader?name=[name].[ext]'},
+      {test: /\.(jpe?g|png|gif)$/i, loader: 'file-loader?name=[name].[ext]&outputPath=images/'},
       {test: /\.ico$/, loader: 'file-loader?name=[name].[ext]'},
       {test: /\.html$/, loader: 'raw-loader'}].concat(envVars.moduleRules)
   },
