@@ -1,6 +1,8 @@
 import angular from 'angular';
 import '@uirouter/angularjs';
 
+import helloCtrl from './hello/hello.controller';
+
 let app = angular.module('app', ['ui.router']);
 
 // declare "global" constants here
@@ -15,7 +17,7 @@ app.config(['$stateProvider', $stateProvider => {
     .state({
       name: 'hello',
       url: '/hello',
-      controller: 'HelloCtrl',
+      controller: helloCtrl,
       template: require('./hello/hello.html')
     });
 }]);
